@@ -1,0 +1,6 @@
+{
+  "name": "Morbi Tile Box, Pattern & Quotation Calculator",
+  "description": "Professional Morbi ceramic tile box estimator, modular multi-size pattern coverage (P.1–P.18), freight weight optimizer, and GST quotation generator created by Nikunj Kansagara.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

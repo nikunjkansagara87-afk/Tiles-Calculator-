@@ -1,0 +1,91 @@
+{
+  "entities": {
+    "BrandConfig": {
+      "title": "BrandConfig",
+      "description": "Global published brand, multi-logo showcase, and UI interface theme settings for all users",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string", "maxLength": 100 },
+        "tagline": { "type": "string", "maxLength": 200 },
+        "creatorName": { "type": "string", "maxLength": 100 },
+        "gstin": { "type": "string", "maxLength": 30 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "email": { "type": "string", "maxLength": 100 },
+        "address": { "type": "string", "maxLength": 300 },
+        "cityState": { "type": "string", "maxLength": 100 },
+        "bankName": { "type": "string", "maxLength": 100 },
+        "accountNo": { "type": "string", "maxLength": 50 },
+        "ifscCode": { "type": "string", "maxLength": 30 },
+        "branch": { "type": "string", "maxLength": 100 },
+        "logoUrl": { "type": "string", "maxLength": 600000 },
+        "logoInitials": { "type": "string", "maxLength": 10 },
+        "logoShape": { "type": "string", "maxLength": 20 },
+        "logoSize": { "type": "string", "maxLength": 10 },
+        "logoFrameBg": { "type": "string", "maxLength": 40 },
+        "partnerLogos": { "type": "array" },
+        "showPartnerLogosInHeader": { "type": "boolean" },
+        "showPartnerLogosInPrint": { "type": "boolean" },
+        "stampImageUrl": { "type": "string", "maxLength": 400000 },
+        "invoiceTitle": { "type": "string", "maxLength": 80 },
+        "signatoryTitle": { "type": "string", "maxLength": 80 },
+        "themeGradient": { "type": "string", "maxLength": 300 },
+        "bgImageUrl": { "type": "string", "maxLength": 600000 },
+        "bgOverlayOpacity": { "type": "number" },
+        "accentColor": { "type": "string", "maxLength": 30 },
+        "customAccentHex": { "type": "string", "maxLength": 20 },
+        "headerStyle": { "type": "string", "maxLength": 40 },
+        "cardStyle": { "type": "string", "maxLength": 40 },
+        "cardRadius": { "type": "string", "maxLength": 20 },
+        "tableHeaderStyle": { "type": "string", "maxLength": 40 },
+        "fontFamily": { "type": "string", "maxLength": 40 },
+        "showPromoBanner": { "type": "boolean" },
+        "promoBannerText": { "type": "string", "maxLength": 250 },
+        "promoBannerBg": { "type": "string", "maxLength": 150 },
+        "catalogueUrl": { "type": "string", "maxLength": 300 },
+        "websiteUrl": { "type": "string", "maxLength": 300 },
+        "whatsappDirect": { "type": "string", "maxLength": 40 },
+        "termsAndConditions": { "type": "array" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["companyName", "creatorName"]
+    },
+    "AdminProfile": {
+      "title": "AdminProfile",
+      "description": "Authorized administrator record",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 100 },
+        "role": { "type": "string", "enum": ["admin"] },
+        "name": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["email", "role"]
+    },
+    "PatternsConfig": {
+      "title": "PatternsConfig",
+      "description": "Global modular patterns list and coverage factors published by the master admin",
+      "type": "object",
+      "properties": {
+        "patternsList": { "type": "array" },
+        "factors": { "type": "object" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["patternsList"]
+    }
+  },
+  "firestore": {
+    "/settings/brand": {
+      "schema": "BrandConfig",
+      "description": "Global brand and studio settings visible to all users, editable only by admin"
+    },
+    "/settings/patterns": {
+      "schema": "PatternsConfig",
+      "description": "Global modular tile patterns published and editable by master admin"
+    },
+    "/admins/{adminId}": {
+      "schema": "AdminProfile",
+      "description": "Whitelisted administrator credentials"
+    }
+  }
+}
